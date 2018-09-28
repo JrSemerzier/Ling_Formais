@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Relatório</title>
+</head>
+<body>
+
+<section>
+	<section class="implementation">
+		<h3>Implementação</h3>
+	<p>A manipulação de GRs está implementada nos arquivos regular_grammar.py, que 
+	contém as classes Grammar e Production, e operations_with_grammars.py, que contém
+	funções de concatenação, união, fechamento reflexivo e conversão para AF de 
+	GRs.</p>
+	<p>A manipulação de AFs está implementada nos arquivos deterministic_automaton.py,
+	que contém as classes Automaton, State, Transition e equiClasses (esta usada para
+	o algoritmo de minimização), non_deterministic_automaton.py, que contém as
+	classes NDAutomaton, NDState e NDTransition, e operations_with_automata.py, que
+	contém as funções de união, interseção, complemento, diferença para AFs, além
+	dos testes de vacuidade, inclusão e equivalência, não usados na interface, e uma
+	função que cria um NDAutomaton equivalente a um Automaton, usada na interface
+	para criar autômatos não-determinísticos novos.</p>
+	<p>Além disso, na classe Grammar há a validação das produções de uma GR, na classe
+	Automaton há a função de minimizar um AFD, e na classe NDAutomaton há a função 
+	de determinizar um AFND. A minimização de AFDs é implementada usando o algoritmo 
+	de Hopcroft para encontrar estados equivalentes.</p>
+	<p>Para a manipulação de ERs, o arquivo structures.py contém as classes e funções
+	que normalizam e validam ERs, além do algoritmo de Simone para converter uma ER
+	em notação polonesa em um AFD e uma função para converter uma ER em notação convencional 
+	para uma ER em notação polonesa, para mais fácil manipulação no método
+	de Simone.</p>
+	</section>
+	<section classs="interface-general">
+		<h3>Interface</h3>
+		<p>GRs, AFs e ERs são manipulados um por vez na interface. Para escolher o que
+		manipular, há três listas no lado esquerdo da interface, uma para cada tipo,
+		send=o exibida apenas a do tipo selecionado. Também do lado esquerdo, há um botão
+		para criar uma GR nova do tipo G: P = {S -> &}, uma ER simples representando a
+		concatenação de letras minúsculas e dígitos, ou um AFD com alfabeto {0,1} com a
+		penas um estado e nenhuma transição.</p>
+		<p>No centro da interface há uma tela para exibir textualmente a GR/ER/AF escolhida 
+		e uma para exibir as sentenças de tamanho n produzidas ou reconhecidas pela GR ou
+		pelo AF selecionado, respectivamente.</p>
+	</section>
+	<section>
+		<h3>Abas</h3>
+		<ol>
+		<li><p>No lado direito da interface, há sete abas que representam funções diferentes
+		para manipulação de GRs/ERs/AFs. A primeira aba é a de edição de GRs. Cada linha
+		representa um símbolo não-terminal e suas produções. Uma produção só será vali
+		dada se o não-terminal do lado direito já pertencer à GR, mesmo que seja antes
+		de a GR ser salva. Ao salvar uma GR, as produção inválidas serão automaticamente
+		removidas. Também há uma entrada para edição do nome da GR. A entrada só será a
+		ceita se não houver mais nenhuma GR com o mesmo nome escolhido, além da GR já
+		selecionada. Entradas para não terminais podem ser adicionadas através de um bo
+		tão na parte inferior do painel e removidas através de um botão ao seu lado.</p>
+		<li><p>A segunda e a quarta aba são as para edição de AFDs e AFNDs, respectivamente. Seu
+		funcionamento é similar, exceto que cada celula da tabela de AFNDs pode conter mais de um estado
+		destino. Para remover um estado da transição, basta editar a célula manualmente. Os estados e o alfabeto
+		são editáveis na parte superior das abas, com suas quantidades editadas por botões, similarmente
+		às produções das GRs, e seu conteúdo editado textualmente. Os estados de aceitação e inical são
+		editáveis usando botões e check-boxes, localizados nas colunas indicadas da tabela. Para incluir um
+		estado a uma transição, clique nele na lista de estados e arraste até a celula adequada. Na parte
+		inferior das abas, há botões para minimizar AFDs, tornar um AFD em AFND, determinizar um AFND, salvar
+		a edição feita no AF, e exibir as sentenças de tamanho n aceitas pelo AF. O nome do AF é editável da
+		mesma maneira que o nome da GR.</p></li>
+		<li><p>A terceira e a sexta aba são para operações com GRs e AFs, respectivamente. As operações estão indicadas com o operador entre os operandos, cada um com uma entrada textual para o nome do operando, ou após, no caso das operações unárias. Após digitar o nome dos operandos, aperta-se o botão abaixo do segundo operando (ou do operador, no caso das operações unárias) para realizar a operação.</p></li>
+		<li><p>A quinta aba é para manipulação de ERs. Há uma entrada de texto para editar a ER, um botão para salvar a edição e um botão para converter a ER para um AF. Se a expressão salva for inválida, ela será substituída por uma padrão. Antes de poder manipular uma ER, ela deve ser selecionada na lista de ERs à esquerda da interface.</p></li>
+		<li><p>A sétima aba é para a conversão de GR para AF e vice-versa. Assim como nos operadores, há uma entrada textual para o nome da GR/AF a ser convertida e um botão para fazer a conversão.</p></li>
+	</section>
+	<section class="refs">
+		<h3>Referências</h3>
+		<p>
+			Nós utilizamos uma função para passar um RE para notação polonesa do link: <a href="http://interactivepython.org/runestone/static/pythonds/BasicDS/InfixPrefixandPostfixExpressions.html">Código</a>. Ela está presente no arquivo structures.py, da linha 36 até a linha 68.
+		</p>
+	</section>
+</section>
+
+</body>
+</html>
