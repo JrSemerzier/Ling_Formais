@@ -37,7 +37,7 @@ if __name__ == "__main__":
 	#for elem in convert_to_automaton(myGrammar):
 		#print(elem)
 	#print(convert_to_automaton(myGrammar)[0])
-
+#================================================================
 #AUTOMATICO TO GRAMATICA @(A,b)=B
 #Transitions[0][0][0]
 	alfabeto=['a','b']
@@ -47,7 +47,7 @@ if __name__ == "__main__":
 	#Our table has:
 	#a tuple with a set of states
 	# a set of states
-	Tabela=[myTransition(estados[0],alfabeto[0],[estados[1]]),
+	Tabela=[myTransition(estados[0],alfabeto[0],'-'),
 				 myTransition(estados[0],alfabeto[1],[estados[2]]),
 				 myTransition(estados[1],alfabeto[0],[estadoFinal[0]]),
 				 myTransition(estados[1],alfabeto[1],[estados[3]]),
@@ -59,13 +59,28 @@ if __name__ == "__main__":
 	# 	print(elem.getSecondtSet())
 	# 	print(elem.getSymbole())
 	for elem in AutToGram(Tabela,estadoFinal,estadoInicial):
-		#print(elem)
-
+		print(elem)
+#==============================================================
 
     #		AFND TO AFD
 
 
-
+	# alfabeto=['a','b']
+	# estados=['S','A','B','C']
+	# estadoInicial='S'
+	# estadoFinal=['C']
+	# #Our table has:
+	# #a tuple with a set of states
+	# # a set of states
+	# Tabela=[myTransition(estados[0],alfabeto[0],[estados[1],estados[0]]),
+	# 			 myTransition(estados[0],alfabeto[1],[estados[0]]),
+	# 			 myTransition(estados[1],alfabeto[0],'-'),
+	# 			 myTransition(estados[1],alfabeto[1],[estados[2]]),
+	# 			 myTransition(estados[2],alfabeto[0],'-'),
+	# 			 myTransition(estados[2],alfabeto[1],[estados[3]]),
+	# 			 myTransition(estados[3],alfabeto[0],'-'),
+	# 			 myTransition(estados[3],alfabeto[1],'-')]
+	# for elem in Tabela: 
 
 
 	#Gram=AutToGrammar(convert_to_automaton(myGrammar))

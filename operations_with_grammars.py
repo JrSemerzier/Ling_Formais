@@ -321,6 +321,8 @@ def AutToGram(Tabela,estadoFinal,estadoInicial):
         gram.append(prod)
     for elem in Tabela:
         for elem1 in elem.getSecondtSet(): 
+            if elem1=='-':
+                 continue
             if elem1 in estadoFinal:
                 prod=elem.getFirstSet() + "->"+ elem.getSymbole() 
             else:     
