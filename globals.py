@@ -12,4 +12,4 @@ class Globals:
     displayed = 0
     selected = None
     m = None
-    automato=[];
+    automato=[]

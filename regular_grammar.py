@@ -270,3 +270,34 @@ class Production:
 
 	def __eq__(self, other):
 		return self.__hash__() == other.__hash__()
+
+#--------------------------------------------------------------------------------
+class myTransition:
+	# create a production in memory
+	def __init__(self, setOfstates,symbol,setOfstatesNext):
+		self.setOfstates = setOfstates
+		self.symbol = symbol
+		self.setOfstatesNext=setOfstatesNext
+	
+# to show the current object (production representation) to the user when the user use print comand
+# we concatenate the "leftSide" variable with "->" and "rightSide" variable
+	# def __str__(self):		
+	# 	return self.statesAndSym + self.statesNext
+
+
+# # to show the current object to the user when the user use console comand, where "self" is the address of this object
+# 	def __repr__(self):
+# 		return str(self)
+
+	#def converte(self):
+
+	def Produc(self):
+		return self.statesAndSym,self,self.statesNext
+	def getFirstSet(self):
+		return self.setOfstates
+	def getSecondtSet(self):
+		return self.setOfstatesNext
+	def getSymbole(self):
+		return self.symbol
+
+    

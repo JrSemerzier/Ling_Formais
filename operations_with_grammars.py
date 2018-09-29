@@ -35,7 +35,7 @@ def convert_to_automaton(gr):
                 # print(s)
                 finalStates = [α]
                 t = NDTransition(s,symbol, sset)#aB ==>symbolo=a ; sset = B  
-                finalStates= NDTransition('α',symbol, '-')
+                finalStates= NDTransition('α',symbol, '-')#para constriur o estado final
                 Globals.automato.append(t)
                 Globals.automato.append(finalStates)
                 #print(t)
@@ -51,9 +51,8 @@ def convert_to_automaton(gr):
         #     finalStates.append(initialState)
         #print(automato)
         #Globals.automato.append(finalStates)
+
         return Globals.automato;#NDAutomaton(states.values(), finalStates, initialState, alphabet)
-
-
 
 def grammar_union(gr1, gr2, add = False):
     hasEpsilon = False
@@ -312,3 +311,20 @@ def grammar_kleene_star(gr, add = False):
     newG = Grammar(newProds, gr.name + "*", add)
 
     return newG
+#-----------------------------------------------------------------------
+    # def AutToGrammar(automata)
+    #     for elem in automata
+def AutToGram(Tabela,estadoFinal,estadoInicial):
+    gram=[]
+    if estadoInicial in estadoFinal:
+        prod=estadoInicial + "->"+ 'ε'
+        gram.append(prod)
+    for elem in Tabela:
+        for elem1 in elem.getSecondtSet(): 
+            if elem1 in estadoFinal:
+                prod=elem.getFirstSet() + "->"+ elem.getSymbole() 
+            else:     
+                pro=elem.getSymbole()+elem1
+                prod=elem.getFirstSet()+ "->" + pro
+            gram.append(prod) 
+    return gram
